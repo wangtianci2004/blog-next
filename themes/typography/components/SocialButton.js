@@ -8,13 +8,12 @@ import { handleEmailClick } from '@/lib/plugins/mailEncrypt'
  * @constructor
  */
 const SocialButton = () => {
-
   const emailIcon = useRef(null)
   const CONTACT_EMAIL = siteConfig('CONTACT_EMAIL')
 
   return (
-    <div className='w-52 justify-center flex-wrap flex'>
-      <div className='space-x-3 text-xl text-gray-600 dark:text-gray-400 text-center'>
+    <div className='justify-center w-full md:justify-start md:w-52 flex-wrap flex my-2'>
+      <div className='space-x-5  text-xl text-gray-600 dark:text-gray-400 text-center'>
         {siteConfig('CONTACT_GITHUB') && (
           <a
             target='_blank'
@@ -48,7 +47,7 @@ const SocialButton = () => {
             rel='noreferrer'
             href={siteConfig('CONTACT_LINKEDIN')}
             title={'linkedIn'}>
-            <i className='transform hover:scale-125 duration-150 fab fa-linkedin dark:hover:text-indigo-400 hover:text-indigo-600' />
+            <i className='fab fa-linkedin transform hover:scale-125 duration-150' />
           </a>
         )}
         {siteConfig('CONTACT_WEIBO') && (
@@ -69,6 +68,8 @@ const SocialButton = () => {
             <i className='fab fa-instagram transform hover:scale-125 duration-150' />
           </a>
         )}
+
+        {/* 邮件按钮使用解密点击逻辑 */}
         {CONTACT_EMAIL && (
           <a
             onClick={e => handleEmailClick(e, emailIcon, CONTACT_EMAIL)}
@@ -78,6 +79,7 @@ const SocialButton = () => {
             <i className='fas fa-envelope transform hover:scale-125 duration-150' />
           </a>
         )}
+
         {JSON.parse(siteConfig('ENABLE_RSS')) && (
           <a
             target='_blank'
@@ -103,6 +105,15 @@ const SocialButton = () => {
             title={'youtube'}
             href={siteConfig('CONTACT_YOUTUBE')}>
             <i className='fab fa-youtube transform hover:scale-125 duration-150' />
+          </a>
+        )}
+        {siteConfig('CONTACT_THREADS') && (
+          <a
+            target='_blank'
+            rel='noreferrer'
+            title={'threads'}
+            href={siteConfig('CONTACT_THREADS')}>
+            <i className='fab fa-threads transform hover:scale-125 duration-150' />
           </a>
         )}
       </div>
